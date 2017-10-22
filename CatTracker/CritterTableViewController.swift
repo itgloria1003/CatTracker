@@ -34,6 +34,7 @@ class CritterTableViewController: UITableViewController {
                     .automatic)
             }
         }
+        saveCritters()
     }
     
     // MARK: private Methods
@@ -58,13 +59,25 @@ class CritterTableViewController: UITableViewController {
         
     }
     
+    
+    private func saveCritters() {
+        let isSuccessfulSave = NSKeyedArchiver.archiveRootObject( critters, toFile: Critter.ArchiveURL!.path)
+        if isSuccessfulSave {
+            os_log("Critters successfully saved", log: OSLog.default,type: .debug)
+        } else {
+            os_log("Failed to save", log: OSLog.default, type: .debug)
+        }
+    }
+
+
 
     override func viewDidLoad() {
-       // super.viewDidLoad()
-
-        // Load the sample data 
-        loadSampleCats()
-  
+        navigationItem.leftBarButtonItem = editButtonItem
+        if let savedCritters = loadCritters() {
+            critters += savedCritters
+        } else {
+            loadSampleCats()
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -114,6 +127,7 @@ class CritterTableViewController: UITableViewController {
         if editingStyle == .delete {
             // Delete the row from the data source
             critters.remove(at: indexPath.row)
+            saveCritters()
             tableView.deleteRows(at: [indexPath], with: .fade)
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
@@ -169,6 +183,9 @@ class CritterTableViewController: UITableViewController {
         }
     }
     
-    
+    private func loadCritters() -> [Critter]? {
+        return NSKeyedUnarchiver.unarchiveObject(withFile: (Critter.ArchiveURL!.path)) as? [Critter]
+        
+    }
 
 }
