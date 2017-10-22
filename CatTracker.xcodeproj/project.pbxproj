@@ -13,6 +13,9 @@
 		0789D1701F9B28B600E0D645 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0789D16F1F9B28B600E0D645 /* Assets.xcassets */; };
 		0789D1731F9B28B600E0D645 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0789D1711F9B28B600E0D645 /* LaunchScreen.storyboard */; };
 		0789D17E1F9B28B600E0D645 /* CatTrackerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0789D17D1F9B28B600E0D645 /* CatTrackerTests.swift */; };
+		0789D1891F9B358E00E0D645 /* Critter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0789D1881F9B358E00E0D645 /* Critter.swift */; };
+		0789D18B1F9B38D600E0D645 /* CritterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0789D18A1F9B38D600E0D645 /* CritterTableViewCell.swift */; };
+		0789D18D1F9B421F00E0D645 /* CritterTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0789D18C1F9B421F00E0D645 /* CritterTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +39,9 @@
 		0789D1791F9B28B600E0D645 /* CatTrackerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CatTrackerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0789D17D1F9B28B600E0D645 /* CatTrackerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatTrackerTests.swift; sourceTree = "<group>"; };
 		0789D17F1F9B28B600E0D645 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0789D1881F9B358E00E0D645 /* Critter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Critter.swift; sourceTree = "<group>"; };
+		0789D18A1F9B38D600E0D645 /* CritterTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CritterTableViewCell.swift; sourceTree = "<group>"; };
+		0789D18C1F9B421F00E0D645 /* CritterTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CritterTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +86,9 @@
 				0789D1681F9B28B600E0D645 /* AppDelegate.swift */,
 				0789D16A1F9B28B600E0D645 /* ViewController.swift */,
 				0789D16C1F9B28B600E0D645 /* Main.storyboard */,
+				0789D18C1F9B421F00E0D645 /* CritterTableViewController.swift */,
+				0789D1881F9B358E00E0D645 /* Critter.swift */,
+				0789D18A1F9B38D600E0D645 /* CritterTableViewCell.swift */,
 				0789D16F1F9B28B600E0D645 /* Assets.xcassets */,
 				0789D1711F9B28B600E0D645 /* LaunchScreen.storyboard */,
 				0789D1741F9B28B600E0D645 /* Info.plist */,
@@ -200,6 +209,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				0789D16B1F9B28B600E0D645 /* ViewController.swift in Sources */,
+				0789D18B1F9B38D600E0D645 /* CritterTableViewCell.swift in Sources */,
+				0789D18D1F9B421F00E0D645 /* CritterTableViewController.swift in Sources */,
+				0789D1891F9B358E00E0D645 /* Critter.swift in Sources */,
 				0789D1691F9B28B600E0D645 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -406,6 +418,7 @@
 				0789D1841F9B28B600E0D645 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		0789D1851F9B28B600E0D645 /* Build configuration list for PBXNativeTarget "CatTrackerTests" */ = {
 			isa = XCConfigurationList;
@@ -414,6 +427,7 @@
 				0789D1871F9B28B600E0D645 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
