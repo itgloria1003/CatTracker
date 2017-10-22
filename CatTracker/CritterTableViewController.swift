@@ -42,6 +42,7 @@ class CritterTableViewController: UITableViewController {
         let photo1 = UIImage(named: "cat1")
         let photo2 = UIImage(named: "cat2")
         let photo3 = UIImage(named: "cat3")
+       
         guard let cat1 = Critter(name: "ChungChi Cat", photo: photo1, details:
             "in ChungChi restaurant")
         else {
@@ -55,7 +56,54 @@ class CritterTableViewController: UITableViewController {
         else {
                 fatalError("Unable to instantiate cat3")
         }
+        
+        asyncLoadImageFromURL(urlString: "http://www.cse.cuhk.edu.hk/~shor/baby.jpg")
+        
         critters += [cat1, cat2, cat3]
+        
+    }
+    
+    func asyncLoadImageFromURL(urlString: String  )
+    {
+        let photodefault = UIImage(named: "defaultPhoto" )
+        let url:URL = URL(string: urlString)!
+        let session = URLSession.shared
+        guard let cat4 = Critter(name :"network bird 1",photo:photodefault, details: "on Internet")
+            else {
+                fatalError("Unable to instantiate cat4")
+        }
+        
+        let task = session.dataTask(with: url, completionHandler: {
+            (
+            data, response, error) in
+            
+            
+            if data != nil
+            {
+                let image = UIImage(data: data!)
+                
+                if(image != nil)
+                {
+                    
+                    DispatchQueue.main.async(execute: {
+                       
+                        cat4.photo = image
+                        let newIndexPath = IndexPath(row: self.critters.count,section: 0)
+                        self.critters.append( cat4 )
+                        self.tableView.insertRows(at: [newIndexPath], with:
+                            .automatic)
+                        
+                        
+                    })
+                    
+                }
+                
+            }
+            
+            
+            
+        })
+        task.resume()
         
     }
     
@@ -78,6 +126,7 @@ class CritterTableViewController: UITableViewController {
         } else {
             loadSampleCats()
         }
+//        loadSampleCats()
     }
 
     override func didReceiveMemoryWarning() {
