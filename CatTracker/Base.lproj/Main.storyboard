@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="90" id="D1Y-qL-55j" customClass="CritterTableViewCell" customModule="CatTracker" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CritterTableViewCell" rowHeight="90" id="D1Y-qL-55j" customClass="CritterTableViewCell" customModule="CatTracker" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="92" width="375" height="90"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="D1Y-qL-55j" id="8mA-wf-Jph">
@@ -48,6 +48,7 @@
                                     <outlet property="detailsTextField" destination="91P-Kc-4eS" id="Zqq-ks-JoM"/>
                                     <outlet property="nameLabel" destination="tPl-4j-rP3" id="kj8-Ug-UVq"/>
                                     <outlet property="photoImageView" destination="iAf-f2-iyP" id="NId-He-gsS"/>
+                                    <segue destination="BYZ-38-t0r" kind="show" identifier="ShowDetail" id="0yf-E5-jtz"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -66,7 +67,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1dK-08-c3p" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="328.80000000000001" y="123.68815592203899"/>
+            <point key="canvasLocation" x="292" y="288"/>
         </scene>
         <!--New Critter-->
         <scene sceneID="tne-QT-ifu">
@@ -123,7 +124,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="8Pa-TB-p9i">
                             <connections>
-                                <segue destination="ury-d5-cg6" kind="unwind" unwindAction="unwindToCritterListWithSender:" id="3Wp-QN-kRB"/>
+                                <segue destination="ury-d5-cg6" kind="unwind" unwindAction="unwindToCritterListWithSender:" id="IxJ-fL-QRc"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -142,7 +143,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1996" y="122.78860569715144"/>
+            <point key="canvasLocation" x="1932" y="289"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="pf6-Ko-WiM">
@@ -160,7 +161,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="38D-JL-hLa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-610.39999999999998" y="123.68815592203899"/>
+            <point key="canvasLocation" x="-636" y="288"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="1cT-d0-T2O">
@@ -178,10 +179,13 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pp0-mK-KkF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1056.8" y="122.78860569715144"/>
+            <point key="canvasLocation" x="1113" y="-259"/>
         </scene>
     </scenes>
     <resources>
         <image name="defaultPhoto" width="160" height="160"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="0yf-E5-jtz"/>
+    </inferredMetricsTieBreakers>
 </document>

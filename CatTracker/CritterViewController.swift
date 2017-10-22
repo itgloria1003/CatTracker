@@ -28,7 +28,18 @@ class CritterViewController: UIViewController, UITextFieldDelegate, UIImagePicke
     @IBOutlet weak var saveButton: UIBarButtonItem!
     
     @IBAction func cancel(_ sender: UIBarButtonItem) {
-        dismiss(animated: true, completion: nil)
+        let isPresentingInAddCritterMode =
+            presentingViewController is UINavigationController
+        if isPresentingInAddCritterMode {
+            dismiss(animated: true, completion: nil)
+        }
+        else if let owningNavigationController =
+            navigationController {
+            owningNavigationController.popViewController(animated: true)
+        } else {
+            fatalError("The CritterViewController is not inside a navigation controller.")
+        }
+        
     }
     
     
@@ -56,6 +67,8 @@ class CritterViewController: UIViewController, UITextFieldDelegate, UIImagePicke
         present(imagePickerController, animated: true, completion: nil)
     }
     
+   
+    
     //MARK: UIImagePickerControllerDelegate
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true, completion: nil)
@@ -73,8 +86,20 @@ class CritterViewController: UIViewController, UITextFieldDelegate, UIImagePicke
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.leftBarButtonItem = editButtonItem
+        
         // Do any additional setup after loading the view, typically from a nib.
         nameTextField.delegate = self
+        
+        
+        
+        if let critter = critter {
+            navigationItem.title = critter.name
+            nameTextField.text = critter.name
+            photoImageView.image = critter.photo
+            detailsTextField.text = critter.details
+        }
+        
         updateSaveButtonState()
     }
 
@@ -97,6 +122,8 @@ class CritterViewController: UIViewController, UITextFieldDelegate, UIImagePicke
         updateSaveButtonState()
         navigationItem.title = nameTextField.text
     }
+    
+   
     
     //MARK: Private methods
     private func updateSaveButtonState() {

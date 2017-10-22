@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import os.log
+
 
 class CritterTableViewController: UITableViewController {
     
@@ -16,20 +18,23 @@ class CritterTableViewController: UITableViewController {
     
 
     
-    
     //MARK: Actions
     @IBAction func unwindToCritterList(sender:
         UIStoryboardSegue) {
-        if let sourceViewController = sender.source as?
-            CritterViewController, let critter =
-            sourceViewController.critter {
-            let newIndexPath = IndexPath(row: critters.count,
-                                         section: 0)
-            critters.append( critter )
-            tableView.insertRows(at: [newIndexPath], with: .automatic)
+        if let sourceViewController = sender.source as? CritterViewController,
+            let critter = sourceViewController.critter {
+            if let selectedIndexPath = tableView.indexPathForSelectedRow
+            {
+                critters[selectedIndexPath.row] = critter
+                tableView.reloadRows(at: [selectedIndexPath], with: .none) }
+            else {
+                let newIndexPath = IndexPath(row: critters.count,section: 0)
+                critters.append( critter )
+                tableView.insertRows(at: [newIndexPath], with:
+                    .automatic)
+            }
         }
     }
-    
     
     // MARK: private Methods
     private func loadSampleCats() {
@@ -70,8 +75,7 @@ class CritterTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1 
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -97,25 +101,25 @@ class CritterTableViewController: UITableViewController {
         
     }
    
-    /*
+   
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         // Return false if you do not want the specified item to be editable.
         return true
     }
-    */
-
-    /*
+    
+   
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // Delete the row from the data source
+            critters.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    
     }
-    */
+    
 
     /*
     // Override to support rearranging the table view.
@@ -132,14 +136,39 @@ class CritterTableViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        super.prepare(for: segue, sender: sender)
+        switch (segue.identifier ?? "") {
+        case "AddItem":
+            os_log("Adding a new critter.", log: OSLog.default, type: .debug)
+        case "ShowDetail":
+                guard let critterDetailViewController = segue.destination as?
+                    CritterViewController else {
+                        fatalError("Unexpected destination: \(segue.destination)")
+                }
+                guard let
+                    selectedCritterCell = sender as? CritterTableViewCell
+                else {
+                        fatalError("Unexpected sender: \(sender)")
+                }
+                
+                guard let
+                    indexPath = tableView.indexPath(for: selectedCritterCell)
+                else {
+                        fatalError("The selected cell is not being displayed by the table")
+                }
+            
+        let selectedCritter = critters[indexPath.row]
+        critterDetailViewController.critter = selectedCritter
+        default:
+        fatalError("Unexpected Segue Identifier; \(segue.identifier)")
+        }
     }
-    */
+    
+    
 
 }
