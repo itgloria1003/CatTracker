@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0789D1691F9B28B600E0D645 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0789D1681F9B28B600E0D645 /* AppDelegate.swift */; };
-		0789D16B1F9B28B600E0D645 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0789D16A1F9B28B600E0D645 /* ViewController.swift */; };
+		0789D16B1F9B28B600E0D645 /* CritterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0789D16A1F9B28B600E0D645 /* CritterViewController.swift */; };
 		0789D16E1F9B28B600E0D645 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0789D16C1F9B28B600E0D645 /* Main.storyboard */; };
 		0789D1701F9B28B600E0D645 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0789D16F1F9B28B600E0D645 /* Assets.xcassets */; };
 		0789D1731F9B28B600E0D645 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0789D1711F9B28B600E0D645 /* LaunchScreen.storyboard */; };
@@ -31,7 +31,7 @@
 /* Begin PBXFileReference section */
 		0789D1651F9B28B600E0D645 /* CatTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CatTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0789D1681F9B28B600E0D645 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		0789D16A1F9B28B600E0D645 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		0789D16A1F9B28B600E0D645 /* CritterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CritterViewController.swift; sourceTree = "<group>"; };
 		0789D16D1F9B28B600E0D645 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0789D16F1F9B28B600E0D645 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0789D1721F9B28B600E0D645 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -84,7 +84,7 @@
 			isa = PBXGroup;
 			children = (
 				0789D1681F9B28B600E0D645 /* AppDelegate.swift */,
-				0789D16A1F9B28B600E0D645 /* ViewController.swift */,
+				0789D16A1F9B28B600E0D645 /* CritterViewController.swift */,
 				0789D16C1F9B28B600E0D645 /* Main.storyboard */,
 				0789D18C1F9B421F00E0D645 /* CritterTableViewController.swift */,
 				0789D1881F9B358E00E0D645 /* Critter.swift */,
@@ -208,7 +208,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0789D16B1F9B28B600E0D645 /* ViewController.swift in Sources */,
+				0789D16B1F9B28B600E0D645 /* CritterViewController.swift in Sources */,
 				0789D18B1F9B38D600E0D645 /* CritterTableViewCell.swift in Sources */,
 				0789D18D1F9B421F00E0D645 /* CritterTableViewController.swift in Sources */,
 				0789D1891F9B358E00E0D645 /* Critter.swift in Sources */,

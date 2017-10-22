@@ -10,13 +10,16 @@ import UIKit
 
 //class ViewController: UIViewController {
 //class ViewController: UIViewController, UITextFieldDelegate {
-class ViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class CritterViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
 
     // MARK: properties
     @IBOutlet weak var nameTextField: UITextField!
     
     @IBOutlet weak var photoImageView: UIImageView!
+    
+    @IBOutlet weak var detailsTextField: UITextField!
+    
     
     @IBAction func selectImageFromPhotoLibrary(_ sender: UITapGestureRecognizer) {
         nameTextField.resignFirstResponder()
