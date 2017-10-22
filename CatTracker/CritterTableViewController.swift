@@ -14,7 +14,24 @@ class CritterTableViewController: UITableViewController {
     //MARK: Properties
     var critters = [Critter]()
     
+
     
+    
+    //MARK: Actions
+    @IBAction func unwindToCritterList(sender:
+        UIStoryboardSegue) {
+        if let sourceViewController = sender.source as?
+            CritterViewController, let critter =
+            sourceViewController.critter {
+            let newIndexPath = IndexPath(row: critters.count,
+                                         section: 0)
+            critters.append( critter )
+            tableView.insertRows(at: [newIndexPath], with: .automatic)
+        }
+    }
+    
+    
+    // MARK: private Methods
     private func loadSampleCats() {
         let photo1 = UIImage(named: "cat1")
         let photo2 = UIImage(named: "cat2")

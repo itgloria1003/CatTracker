@@ -7,12 +7,17 @@
 //
 
 import UIKit
+import os.log
 
 //class ViewController: UIViewController {
 //class ViewController: UIViewController, UITextFieldDelegate {
 class CritterViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
+    var critter: Critter?
 
+    
+    
+    
     // MARK: properties
     @IBOutlet weak var nameTextField: UITextField!
     
@@ -20,7 +25,29 @@ class CritterViewController: UIViewController, UITextFieldDelegate, UIImagePicke
     
     @IBOutlet weak var detailsTextField: UITextField!
     
+    @IBOutlet weak var saveButton: UIBarButtonItem!
     
+    @IBAction func cancel(_ sender: UIBarButtonItem) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    
+    
+    // MARK: Navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+    {
+        super.prepare(for: segue, sender: sender)
+        guard let button = sender as? UIBarButtonItem, button === saveButton else {
+                os_log("Save button was not pressed, cancelling", log: OSLog.default, type: .debug)
+                return }
+        let name = nameTextField.text
+        let photo = photoImageView.image
+        let details = detailsTextField.text
+        critter = Critter(name: name!, photo: photo, details:details!)
+    }
+    
+    
+    // MARK :action
     @IBAction func selectImageFromPhotoLibrary(_ sender: UITapGestureRecognizer) {
         nameTextField.resignFirstResponder()
         let imagePickerController = UIImagePickerController()
@@ -48,6 +75,7 @@ class CritterViewController: UIViewController, UITextFieldDelegate, UIImagePicke
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         nameTextField.delegate = self
+        updateSaveButtonState()
     }
 
     override func didReceiveMemoryWarning() {
@@ -56,13 +84,24 @@ class CritterViewController: UIViewController, UITextFieldDelegate, UIImagePicke
     }
 
     //MARK: UITextFieldDelegate
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        saveButton.isEnabled = false
+    }
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
-    //    catNameLabel.text = nameTextField.text
+        updateSaveButtonState()
+        navigationItem.title = nameTextField.text
+    }
+    
+    //MARK: Private methods
+    private func updateSaveButtonState() {
+        let text = nameTextField.text ?? ""
+        saveButton.isEnabled = !text.isEmpty
     }
 
 }
