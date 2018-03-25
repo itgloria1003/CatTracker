@@ -8,6 +8,5 @@
 
 ## Demo
 * [demo video] (CatTracker_demo.webm) on how it's worked
-##
-* [Main storyboard] (Main_Story_board.jpeg) of the app
+* ![App Storyboard](Main_Story_board.jpeg)
 
